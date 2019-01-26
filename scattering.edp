@@ -1,0 +1,54 @@
+include "gmshExport.idp";
+
+real k = 2*pi;
+real alpha = pi/2;
+//func uinc = cos(k*alpha*x) + 1i*sin(k*alpha*x);
+func uinc = exp(1i*k*(x*cos(alpha) + y*sin(alpha)));
+
+real R1 = 1;
+real R2 = 3;
+
+border C1(t=0,2*pi){x=R1*cos(t); y = R1*sin(t);}
+border C2(t=0,2*pi){x=R2*cos(t); y = R2*sin(t);}
+
+int nlambda = 20;
+int nc1 = floor(k*nlambda*R1);
+int nc2 = floor(k*nlambda*R2);
+
+load "gmsh";
+mesh Th=gmshload("sous_marin.msh");
+plot(Th, wait= true, cmm = "Mon superbe maillage");
+
+
+fespace Vh(Th, P1);
+Vh<complex> uh,vh;
+
+
+
+// couleur de plot
+
+real[int] colorhsv=[ // color hsv model
+    4./6., 1 , 0.5, // dark blue
+    4./6., 1 , 1, // blue
+    5./6., 1 , 1, // magenta
+    1, 1. , 1, // red
+    1, 0.5 , 1 // light red
+    ];
+
+
+    
+solve Helmholtz (uh , vh, solver=LU) = int2d ( Th ) ( dx ( uh ) * dx ( vh ) ) + int2d ( Th ) ( dy ( uh ) * dy ( vh ) )  -  int2d ( Th ) ( k*k*uh  * vh  ) - int1d ( Th, 2 ) (  1i*k*uh* vh ) + on(3,uh=uinc);
+
+Vh<complex> uabs = abs(uh + uinc);
+Vh<complex> ure = real(uh);
+Vh<complex> uim = imag(uh);
+
+plot(uh,wait = true, cmm = "Solution complet", value = true, fill = true, dim = 2, hsv=colorhsv);
+plot(ure,wait = true, cmm = "Solution reelle", value = true, fill = true, dim = 2, hsv=colorhsv);
+plot(uim,wait = true, cmm = "Solution imaginaire", value = true, fill = true, dim = 2, hsv=colorhsv);
+
+
+
+gmshExport(Th, uh[], "uh.pos");
+gmshExport(Th, ure[], "ure.pos");
+gmshExport(Th, uabs[], "uabs.pos");

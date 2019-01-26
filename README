@@ -1,0 +1,23 @@
+Dossier contenant les codes pour modéliser et visualiser à l'aide de la méthode des éléments finis P1-Lagrange
+
+Lancez le fichier main.py pour calculer la modélisation de la manière suivante :
+	
+	python main.py -f "monfichier"
+
+
+Pour visualiser la modélisation, grâce u code paraview.py :
+	
+	paraview rendu_maillage.vtu
+
+
+Le fichier LectureMSH.py est le code qui permet de lire un fichier .msh
+
+Le fichier assemblage_mat.py contient les fonctions qui permttent de réalier la méthode des éléments finis.
+
+
+###############################
+
+Exemple :
+
+	python main.py -f sous_marin.msh
+	paraview rendu_maillage.vtu
