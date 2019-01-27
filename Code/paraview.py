@@ -26,10 +26,10 @@ def paraview(rendu,output = "rendu_maillage.vtu"):
 		for indice, element in enumerate(rendu.liste_element):
 			file.write('\n' + " ".join(str(s-1) for s in element[2:]))
 			if element[0] == 1: # segment
-				types += "\n" + str(3) # 3 représente un segment pour paraview
+				types += "\n" + str(3) 
 				off += 2
 			elif element[0] == 2: # triangle
-				types += "\n" + str(5) # 5 représente un triangle pour paraview
+				types += "\n" + str(5) 
 				off += 3
 			offsets += "\n" + str(off)
 
