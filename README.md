@@ -14,6 +14,9 @@ Ce dépôt git est constitué de plusieurs fichier:
 
 Lancez le fichier main.py du fichier **Code** pour calculer la modélisation de la manière suivante :
 	
+	cd fichierGMSH/
+	gmsh "monfichier.geo" -2 -o "monfichier.msh"
+	cd ..
 	python Code/main.py -f fichierGMSH/"monfichier.msh"
 
 
