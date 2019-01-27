@@ -19,7 +19,7 @@ Lancez le fichier main.py du fichier **Code** pour calculer la modélisation de 
 
 Pour visualiser la modélisation, grâce u code paraview.py :
 	
-	paraview Code/rendu_maillage.vtu
+	paraview rendu_maillage.vtu
 	FreeFem++ FreeFem/helmholtz.edp
 
 **Attention !** Il est peut - être nécessaire de modifier le chemin du .msh dans le fichier helmholtz.edp
