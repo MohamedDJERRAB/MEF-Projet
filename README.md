@@ -17,7 +17,7 @@ Lancez le fichier main.py du fichier **Code** pour calculer la modélisation de 
 	cd fichierGMSH/
 	gmsh "monfichier.geo" -2 -o "monfichier.msh"
 	cd ..
-	python Code/main.py -f fichierGMSH/"monfichier.msh"
+	python Code/main.py -f fichierGMSH/"monfichier.msh" -k "nombre d'ombre" -a "alpha"
 
 
 Pour visualiser la modélisation, grâce u code paraview.py :
