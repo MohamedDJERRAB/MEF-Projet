@@ -21,7 +21,7 @@ def lecture_fichier(filename):
 			pass	
 
 		#Lecture Triangles
-		nbr_nodes = float(fichier.readline())
+		nbr_nodes = int(fichier.readline())
 
 		for i in range(nbr_nodes):
 

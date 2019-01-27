@@ -52,16 +52,16 @@ class Assemblage:
 					J = self.Loc2Glob(p,j) - 1
 
 					if I == J:
-						data.append(float(djac/12.0))
+						data.append(np.complex(1.0)*self.k*self.k*djac/12.0)
 
 					else : 
-						data.append(float(djac/24.0))
+						data.append(np.complex(1.0)*self.k*self.k*djac/24.0)
 
 					ligne.append(I)
 					colonne.append(J)
 
 		#Construction de la matrice Masse
-		self.M = coo_matrix((np.array(data)*-self.k*self.k,(ligne,colonne))).tocsr()
+		self.M = coo_matrix((np.array(data),(ligne,colonne))).tocsr()
 
 		#TEST
 		print("\n Verification de la Matrice de M \n")
@@ -101,7 +101,7 @@ class Assemblage:
 					J = self.Loc2Glob(p,j) - 1
 
 					inte = gradp[j].dot(Bknew)
-					data.append(-djac/2.0 * inte.dot(np.transpose(gradp[i]))[0][0])
+					data.append(djac/2.0 * inte.dot(np.transpose(gradp[i]))[0][0])
 
 					ligne.append(I)
 					colonne.append(J)
@@ -136,15 +136,15 @@ class Assemblage:
 						J = self.Loc2Glob(p,j)-1
 
 						if I == J:
-							data.append(S/3.0)
+							data.append(np.complex(0,1)*self.k*S/3.0)
 
 						else:
-							data.append(S/6.0)
+							data.append(np.complex(0,1)*self.k*S/6.0)
 
 						ligne.append(I)
 						colonne.append(J)
 
-		self.MFR = coo_matrix((np.array(data)*np.complex(0,-self.k),(ligne,colonne)),shape=(self.nbr_nodes,self.nbr_nodes),dtype=complex).tocsr()
+		self.MFR = coo_matrix((np.array(data),(ligne,colonne)),shape=(self.nbr_nodes,self.nbr_nodes),dtype=complex).tocsr()
 
 
 	#Fonction u_inc

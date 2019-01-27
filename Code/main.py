@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*
 
 import argparse
+from numpy import pi
 from assemblage_mat import Assemblage 
 from paraview import paraview
 import time
@@ -8,8 +9,8 @@ import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-f", required=True, type=str, help="Entrez un fichier")
-parser.add_argument("-k", required=True, type=float, help="Entrez un nombre d'onde k")
-parser.add_argument("-a", required=True, type=float, help="Entrez un alpha")
+parser.add_argument("-k", metavar="r", default=2*pi, type=float, help="Entrez un nombre d'onde k")
+parser.add_argument("-a", metavar="r", default=pi/2, type=float, help="Entrez un alpha")
 
 
 
