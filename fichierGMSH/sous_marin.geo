@@ -55,19 +55,13 @@ Spline(9) = {15,16};//,17,18,19,20};
 Line(10) = {16,22};
 Line(11) = {22,23};
 Line(12) = {23,17};
-// Spline(13) = {16,17};
-// Curve Loop(2) = {13,12,11,10};
-
 
 Spline(14) = {17,18,19};
 Line(15) = {19,24};
 Line(16) = {24,25};
 Line(17) = {25,20};
-// Spline(18) = {19,20};
-// Curve Loop(3) = {15,16,17,18};
 
 Line(19) = {20,21};
-// Curve Loop(4) = {5,7,8,9,13,14,18,19,6};
 Curve Loop(4) = {5,7,8,9,10,11,12,14,15,16,17,19,6};
 
 
@@ -76,9 +70,3 @@ Physical Surface(1) = {1};
 
 Physical Line(2) = {1,2,3,4}; // Ellipse
 Physical Line(3) = {5,7,8,9,10,11,12,14,15,16,17,19,6}; // Sous-marin
-
-Characteristic Length {12} = 1;
-//+
-Characteristic Length {12} = 1;
-//+
-Characteristic Length {12} = 1;
