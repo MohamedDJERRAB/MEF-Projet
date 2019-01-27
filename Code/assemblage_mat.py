@@ -4,16 +4,12 @@ import numpy as np
 from LectureMSH import lecture_fichier
 from scipy.sparse import coo_matrix,csr_matrix,linalg
 
-
-
 class Assemblage:
 	"""docstring for ClassName"""
 
 	def __init__(self, filename,k,a):
 		assert filename, "Entrez un fichier !"
-		assert k, "Entrez un nombre d'onde k"
-
-
+		
 		self.k = k
 		self.a = a
 		self.nbr_nodes, self.liste_nodes, self.nbr_elements, self.liste_element,self.non_tri = lecture_fichier(filename)
@@ -152,11 +148,8 @@ class Assemblage:
 		return np.exp(np.complex(0,1)*self.k*(x*np.cos(self.a) + y*np.sin(self.a)))
 
 	def assemb_mat(self):
-
 		
 		self.A = (self.M + self.D + self.MFR).tolil()
-
-
 		self.b = np.zeros(self.nbr_nodes,dtype = complex)
 
 		for index,elem in enumerate(self.liste_element):

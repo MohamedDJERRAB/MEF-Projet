@@ -1,13 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-
-	Cette fonction permet de lire lun fichier .msh 
-
-
-"""
 import numpy as np 
-
-
 
 def lecture_fichier(filename):
 

@@ -26,27 +26,27 @@ if __name__ == '__main__':
 
 	test = Assemblage(filename,k,a)
 	t1 = time.time()
-	print("\nTemps lecture fichier : "+str(t1-debut))
+	print("\nTemps lecture fichier : "+str(t1-debut)+"\n")
 
 	tmp = time.time()
 	test.Mass()
 	t2 = time.time()
-	print("\nTemps créat Matrice Masse : "+str(t2-tmp))
+	print("\nTemps créat Matrice Masse : "+str(t2-tmp)+"\n")
 
 	tmp = time.time()
 	test.Rigi()
 	t3 = time.time()
-	print("\nTemps creat MAtrice Rigidte: "+str(t3-tmp))
+	print("\nTemps creat MAtrice Rigidte: "+str(t3-tmp)+"\n")
 
 	tmp = time.time()
 	test.Four_Robin()
 	t4 = time.time()
-	print("\nTemps creat Matrice Four_Robin : "+str(t4-tmp))
+	print("\nTemps creat Matrice Four_Robin : "+str(t4-tmp)+"\n")
 
 	tmp = time.time()
 	test.assemb_mat()
 	t5= time.time()
-	print("\nTemps Assemblage: "+str(t5-tmp))
+	print("\nTemps Assemblage: "+str(t5-tmp)+"\n")
 
 	paraview(test)
 
