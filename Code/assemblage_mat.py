@@ -48,16 +48,16 @@ class Assemblage:
 					J = self.Loc2Glob(p,j) - 1
 
 					if I == J:
-						data.append(np.complex(1.0)*self.k*self.k*djac/12.0)
+						data.append(djac/12.0)
 
 					else : 
-						data.append(np.complex(1.0)*self.k*self.k*djac/24.0)
+						data.append(djac/24.0)
 
 					ligne.append(I)
 					colonne.append(J)
 
 		#Construction de la matrice Masse
-		self.M = coo_matrix((np.array(data),(ligne,colonne))).tocsr()
+		self.M = coo_matrix((-self.k*self.k*np.array(data),(ligne,colonne))).tocsr()
 
 		#TEST
 		print("\n Verification de la Matrice de M \n")
