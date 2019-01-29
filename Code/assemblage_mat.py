@@ -132,15 +132,15 @@ class Assemblage:
 						J = self.Loc2Glob(p,j)-1
 
 						if I == J:
-							data.append(np.complex(0,1)*self.k*S/3.0)
+							data.append(S/3.0)
 
 						else:
-							data.append(np.complex(0,1)*self.k*S/6.0)
+							data.append(S/6.0)
 
 						ligne.append(I)
 						colonne.append(J)
 
-		self.MFR = coo_matrix((np.array(data),(ligne,colonne)),shape=(self.nbr_nodes,self.nbr_nodes),dtype=complex).tocsr()
+		self.MFR = coo_matrix(np.complex(0,-self.k)*(np.array(data),(ligne,colonne)),shape=(self.nbr_nodes,self.nbr_nodes),dtype=complex).tocsr()
 
 
 	#Fonction u_inc
